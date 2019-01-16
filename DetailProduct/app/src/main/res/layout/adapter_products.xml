@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardViewItem"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivProducto"
+            android:src="@drawable/ic_favorite_black_24dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp" />
+        <TextView
+            android:id="@+id/tvProducto"
+            tools:text="Jean"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/ivProducto"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tvProductoDes"
+            tools:text="Jean tiro alto bota estrecha"
+            android:layout_toRightOf="@id/ivProducto"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
