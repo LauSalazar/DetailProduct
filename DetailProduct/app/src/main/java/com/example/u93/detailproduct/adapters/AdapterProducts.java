@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.u93.detailproduct.R;
+import com.example.u93.detailproduct.activities.DetailActivity;
 import com.example.u93.detailproduct.models.Product;
+import com.example.u93.detailproduct.viewsinterface.IMainActivity;
 
 import java.util.ArrayList;
 
@@ -19,9 +21,11 @@ public class AdapterProducts extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private ArrayList<Product> productsArrayList;
     private Context context;
-    public AdapterProducts(ArrayList<Product> productsArrayList){
-        this.productsArrayList = productsArrayList;
+    private IMainActivity iMainActivity;
 
+    public AdapterProducts(ArrayList<Product> productsArrayList, IMainActivity iMainActivity){
+        this.productsArrayList = productsArrayList;
+        this.iMainActivity = iMainActivity;
     }
     @NonNull
     @Override
@@ -37,15 +41,18 @@ public class AdapterProducts extends RecyclerView.Adapter<RecyclerView.ViewHolde
         final Product producto = productsArrayList.get(position);
         customViewHolder.productoName.setText(producto.getName());
         customViewHolder.productoDescription.setText(producto.getDescription());
-        /*customViewHolder.cardViewItem.setOnClickListener(new View.OnClickListener() {
+        customViewHolder.cardViewItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("product",producto);
-                context.startActivity(intent);
-            }
-        });*/
+                iMainActivity.intentToDetailActivity(producto);
 
+                //Manera incorrecta ya que la responsabilidad de hacer intent es de la actividad aunque lo permita el adapter
+                /*Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("producto",producto);
+                context.startActivity(intent);*/
+
+            }
+        });
     }
 
     @Override

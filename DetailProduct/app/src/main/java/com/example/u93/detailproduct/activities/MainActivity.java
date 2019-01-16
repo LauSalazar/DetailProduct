@@ -2,6 +2,7 @@ package com.example.u93.detailproduct.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,11 +14,12 @@ import com.example.u93.detailproduct.adapters.AdapterProducts;
 import com.example.u93.detailproduct.helper.ValidateInternet;
 import com.example.u93.detailproduct.models.Product;
 import com.example.u93.detailproduct.services.Repository;
+import com.example.u93.detailproduct.viewsinterface.IMainActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     private RecyclerView recyclerView;
     private Repository repository;
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    adapter = new AdapterProducts(products);
+                    adapter = new AdapterProducts(products, MainActivity.this);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setAdapter(adapter);
@@ -90,5 +92,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         thread.start();
+    }
+
+    @Override
+    public void intentToDetailActivity(Product producto) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        startActivity(intent);
     }
 }
