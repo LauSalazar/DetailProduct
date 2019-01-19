@@ -1,5 +1,6 @@
 package com.example.u93.detailproduct.services;
 
+import com.example.u93.detailproduct.models.DeleteResponse;
 import com.example.u93.detailproduct.models.Product;
 
 import java.io.IOException;
@@ -49,5 +50,14 @@ public class Repository {
         } catch (IOException e){
             throw defaultError();
         }
+    }
+
+    public boolean deleteProduct(String id) throws  IOException{
+        Call call = iServices.deleteProduct(id);
+        Response<DeleteResponse> response = call.execute();
+        if (response.errorBody() != null ){
+            throw defaultError();
+        }
+        return response.body().isStatus();
     }
 }

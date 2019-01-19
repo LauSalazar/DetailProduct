@@ -16,6 +16,9 @@
     <string name="text_again">Intente de nuevo</string>
     <string name="accept">Aceptar</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="delete">Eliminar</string>
+    <string name="regresar">Regresar</string>
+    <string name="deleteProduct">Producto eliminado</string>
 
 
 </resources>

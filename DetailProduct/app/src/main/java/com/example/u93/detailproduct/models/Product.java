@@ -7,6 +7,10 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
+    @SerializedName("_id")
+    @Expose
+    private String id;
+
     @SerializedName("name")
     @Expose
     private String name;
@@ -26,6 +30,14 @@ public class Product implements Serializable {
     @SerializedName("brand")
     @Expose
     private String marca;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

@@ -97,6 +97,12 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     @Override
     public void intentToDetailActivity(Product producto) {
         Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("producto",producto);
         startActivity(intent);
+    }
+
+    protected void onResume(){
+        super.onResume();
+        validateInternet();
     }
 }
